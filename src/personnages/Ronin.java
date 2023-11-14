@@ -3,9 +3,8 @@ package personnages;
 public class Ronin extends Humain {
 	private int Honneur=1;
 
-	public Ronin(String nom, String boisson, int argent, int honneur) {
+	public Ronin(String nom, String boisson, int argent) {
 		super(nom, boisson, argent);
-		this.Honneur = honneur;
 	}
 
 	public void donner(Commerçant beneficiaire) {

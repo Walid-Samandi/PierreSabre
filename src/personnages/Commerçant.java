@@ -16,16 +16,4 @@ public class Commerçant extends Humain {
 		gagnerArgent(argent);
 		parler(argent + " sous ! Je te remercie généreux donateur !");
 	}
-
-	public static void main(String[] args) {
-		Commerçant marco = new Commerçant("Marco", 20);
-		System.out.println(marco);
-		marco.direBonjour();
-		marco.seFaireExtorquer();
-		System.out.println(marco);
-		marco.recevoir(15);
-		marco.boire();
-		System.out.println(marco);
-	}
-
 }

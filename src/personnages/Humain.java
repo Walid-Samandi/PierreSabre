@@ -4,7 +4,8 @@ public class Humain {
 	private String nom;
 	private String boisson;
 	private int argent;
-	
+	protected int nbConnaissance;
+	protected Humain[] memoire = new Humain[30];
 	public Humain(String nom, String boisson, int argent) {
 		this.nom = nom;
 		this.boisson = boisson;
@@ -25,7 +26,7 @@ public class Humain {
     	return  "(" + nom + ")-"; 
     }
 	
-	public void parler(String texte) {
+	protected void parler(String texte) {
     	System.out.println(prendreParole() + "« " + texte + "»");
     }
 	
@@ -36,10 +37,10 @@ public class Humain {
 	public void boire() {
 		parler("Mmmm, un bon verre de "+ boisson +"! GLOUPS !");
 	}
-	public void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {
 		argent=argent + gain;
 	}
-	public void perdreArgent(int perte) {
+	protected void perdreArgent(int perte) {
 		argent=argent - perte;
 	}
 	public void acheter(String bien, int prix) {
@@ -51,21 +52,33 @@ public class Humain {
 			parler("Je n'ai plus que "+ argent +" sous en poche. Je ne peux même pas m'offrir "+ bien +" à "+ prix +" sous.");
 		}
 	}
+	private void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
+	}
 	
+	private void memoriser(Humain humain) {
+		memoire[nbConnaissance]=humain;
+		nbConnaissance++;
+	}
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		direBonjour();
+		autreHumain.repondre(this);
+		memoriser(autreHumain);
+		
+	}
+	
+	public void listerConnaissance() {
+		int id=0;
+		System.out.println(getNom()+" Je connais beaucoup de monde dont: " );
+		
+		while(id<nbConnaissance) {
+			System.out.println(memoire[id].getNom());
+			id++;
+		}
+	}
 	@Override
 	public String toString() {
 		return "Humain [nom=" + nom + ", argent=" + argent + ", boisson=" + boisson +"]";}
-	
-    public static void main(String[] args) {
-		Humain prof=new Humain("Prof","kombucha",54);
-		System.out.println(prof);
-		prof.direBonjour();
-		prof.acheter("un kombucha", 12);
-		prof.boire();
-		prof.acheter("du papier", 2);
-		prof.acheter("un kimono",50);
-		System.out.println(prof);
-		
-	}
-    
 }

@@ -13,14 +13,14 @@ public class HistoireTP4 {
 		System.out.println(marco);
 		marco.direBonjour();
 		
-		Yakuza yaku = new Yakuza("Yaku Le Noir","whisky",30,"Warsong",0);
+		Yakuza yaku = new Yakuza("Yaku Le Noir","whisky",30,"Warsong");
 		System.out.println(yaku);
 		yaku.direBonjour();
 		yaku.extorquer(marco);
 		System.out.println(yaku);
 		System.out.println(marco);
 		
-		Ronin roro = new Ronin("Roro","shochu",60,1);
+		Ronin roro = new Ronin("Roro","shochu",60);
 		System.out.println(roro);
 		roro.donner(marco);
 		System.out.println(marco);
